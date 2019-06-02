@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+  labels:
+    app: nginx-ingress
+    chart: nginx-ingress-1.6.13
+    component: "controller"
+    heritage: Tiller
+    release: release-name
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: <hostname>
+    http:
+      paths:
+        - path: /<path>
+          backend:
+            serviceName: <svc_name>
+            servicePort: <svc_port>
+        - path: /<path>
+          backend:
+            serviceName: <svc_name>
+            servicePort: <svc_port>
